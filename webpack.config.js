@@ -15,6 +15,10 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.jpg/,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
