@@ -1,8 +1,10 @@
 .cards-grid{
     display: grid;
-    grid-gap: 50px;
+    grid-gap: 25px;
     grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    align-items: center;
     width: 800px;
-    margin-top: 10vh;
     perspective: 600px;
+    margin-bottom: 3em;
 }

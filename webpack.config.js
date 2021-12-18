@@ -19,6 +19,10 @@ module.exports = {
         test: /\.jpg/,
         type: 'asset/resource',
       },
+      {
+        test: /\.svg/,
+        type: 'asset/inline',
+      },
     ],
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },

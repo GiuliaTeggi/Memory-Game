@@ -6,6 +6,10 @@ import beeEater from '../../../public/images/bee-eater.jpg';
 import elephant from '../../../public/images/elephant.jpg';
 import flamingo from '../../../public/images/flamingo.jpg';
 import frog from '../../../public/images/frog.jpg';
+import pelican from '../../../public/images/pelican.jpg';
+import rhino from '../../../public/images/rhino.jpg';
+import shark from '../../../public/images/shark.jpg';
+import tiger from '../../../public/images/tiger.jpg';
 
 export default function CardsGrid() {
   const [cards, setCards] = useState([]);
@@ -25,7 +29,8 @@ export default function CardsGrid() {
   const duplicateCards = (cardsArr) => cardsArr.flatMap((card) => [card, card]);
 
   useEffect(() => {
-    const shuffledCards = shuffleCards(duplicateCards([ape, beeEater, elephant, flamingo, frog]));
+    const shuffledCards = shuffleCards(duplicateCards([ape, beeEater, elephant, flamingo,
+      frog, pelican, rhino, shark, tiger]));
     setCards(shuffledCards);
   }, []);
 
