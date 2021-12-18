@@ -2,28 +2,58 @@
     position: relative;
     width: 100px;
     height: 100px;
-    background: lightgray;
-    transition: transform 0.6s;
+    background: darkgreen;
+    transition: transform 0.6s linear;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .card.visible{
-        transform: rotateY(180deg);
+    transform: rotateY(-180deg); 
 }
 
-.card-front, .card-back{
+.card-face{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background: darkgreen;
 }
-.card-back{
-    transform: rotateY(180deg);
+
+.card-face.front{
+    transform: rotateY(0deg) translateZ(5px);
+}
+
+.card-face.back{
+    transform: rotateY(180deg) translateZ(5px);
+}
+
+.card-face.right  { 
+    width: 10px;
+    height: 100%; 
+    right: 0;
+    transform: rotateY( 90deg) translateZ(5px); 
+}
+.card-face.left   { 
+    width: 10px;
+    height: 100%;
+    left: 0;
+    transform: rotateY(-90deg) translateZ(5px); 
+}
+.card-face.top    {
+    width: 100%;
+    height: 10px; 
+    top: 0;
+    transform: rotateX( 90deg) translateZ(5px); 
+}
+.card-face.bottom {
+    width: 100%;
+    height: 10px; 
+    bottom: 0;
+    transform: rotateX(-90deg) translateZ(5px); 
 }
 
 .card img{
     width: 100%;
-    height: auto
+    height: 100%;
 }
