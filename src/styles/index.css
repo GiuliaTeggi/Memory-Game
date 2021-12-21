@@ -1,4 +1,10 @@
+:root{
+    --shadow-color: 186deg 45% 22%;
+}
+
 body{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }

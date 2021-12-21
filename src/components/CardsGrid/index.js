@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from '../Card';
 import './styles.css';
 import ape from '../../../public/images/ape.jpg';
@@ -10,11 +10,13 @@ import pelican from '../../../public/images/pelican.jpg';
 import rhino from '../../../public/images/rhino.jpg';
 import shark from '../../../public/images/shark.jpg';
 import tiger from '../../../public/images/tiger.jpg';
+import zebra from '../../../public/images/zebra.jpg';
 
-export default function CardsGrid() {
+export default function CardsGrid({ setShowEndGameModal, updateMovesCount }) {
   const [cards, setCards] = useState([]);
   const [selectedCards, updateSelectedCards] = useState([]);
-  const [matchedCards, updateMatchedCards] = useState([]);
+  const [matchedPairs, updateMatchedPairs] = useState(0);
+  const timeout = useRef(null);
 
   const shuffleCards = (cardsArr) => {
     const result = cardsArr;
@@ -26,45 +28,67 @@ export default function CardsGrid() {
     return result;
   };
 
-  const duplicateCards = (cardsArr) => cardsArr.flatMap((card) => [card, card]);
+  const createCards = (cardsArr) => cardsArr.flatMap((card) => [
+    { imgSrc: card, matched: false, selected: false },
+    { imgSrc: card, matched: false, selected: false },
+  ]);
 
   useEffect(() => {
-    const shuffledCards = shuffleCards(duplicateCards([ape, beeEater, elephant, flamingo,
-      frog, pelican, rhino, shark, tiger]));
+    const images = [ape, beeEater,
+      // elephant, flamingo,
+      // frog, pelican, rhino, shark, tiger, zebra
+    ];
+    const shuffledCards = shuffleCards(createCards(images));
     setCards(shuffledCards);
   }, []);
 
+  useEffect(() => {
+    if (matchedPairs && (cards.length / 2) === matchedPairs) {
+      setShowEndGameModal(true);
+    }
+  }, [matchedPairs]);
+
+  useEffect(() => () => clearTimeout(timeout.current),
+    []);
+
+  const cardIsMatching = (imgSrc) => selectedCards.some((card) => card.imgSrc === imgSrc);
+
   const cardIsSelected = (index) => selectedCards.some((card) => card.index === index);
 
-  const cardIsVisible = (index) => matchedCards.some((card) => card.index === index);
-
-  const cardIsMatch = (imgSrc) => selectedCards.some((card) => card.imgSrc === imgSrc);
-
-  const onSelectCard = (cardObj) => {
-    const { imgSrc, index } = cardObj;
-    if (!cardIsVisible(index) && selectedCards.length !== 2) {
-      if (cardIsMatch(imgSrc)) {
-        updateMatchedCards((prevState) => [...prevState, ...selectedCards, cardObj]);
-        updateSelectedCards([]);
-      } else if (selectedCards.length === 1) {
-        updateSelectedCards((prevState) => [...prevState, cardObj]);
-        setTimeout(() => {
+  const onCardClick = (cardObj) => {
+    const { imgSrc, index, matched } = cardObj;
+    if (matched || selectedCards === 2) {
+      return;
+    }
+    if (cardIsMatching(imgSrc)) {
+      const newCards = [...cards];
+      newCards[selectedCards[0].index].matched = true;
+      newCards[index].matched = true;
+      setCards(newCards);
+      updateMatchedPairs((prevState) => prevState + 1);
+      updateMovesCount((prevState) => prevState + 1);
+      updateSelectedCards([]);
+    } else {
+      updateSelectedCards((prevState) => [...prevState, cardObj]);
+      if (selectedCards.length === 1) {
+        updateMovesCount((prevState) => prevState + 1);
+        timeout.current = setTimeout(() => {
           updateSelectedCards([]);
-        }, 1300);
-      } else {
-        updateSelectedCards((prevState) => [...prevState, cardObj]);
+        }, 800);
       }
     }
   };
 
   return (
         <div className="cards-grid">
-          {cards.map((card, index) => <Card key={index}
-          index={index}
-          imgSrc={card}
-          onSelectCard={onSelectCard}
-          isVisible={cardIsVisible(index) || cardIsSelected(index)}
-          />)}
+          {cards.map(({ imgSrc, matched }, index) => (
+            <Card key={index}
+            index={index}
+            imgSrc={imgSrc}
+            onCardClick={onCardClick}
+            isFlipped={matched || cardIsSelected(index)}
+            />
+          ))}
         </div>
   );
 }

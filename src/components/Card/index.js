@@ -3,12 +3,13 @@ import './styles.css';
 
 export default function Card(props) {
   const {
-    index, imgSrc, isVisible, onSelectCard,
+    index, imgSrc, isFlipped, onCardClick,
   } = props;
 
-  const cardStyles = `card ${isVisible ? 'visible' : ''}`;
+  const cardStyles = `card ${isFlipped ? 'flipped' : ''}`;
+
   return (
-        <div className={cardStyles} onClick={() => onSelectCard({ index, imgSrc })} data-testid='card'>
+        <div className={cardStyles} onClick={() => onCardClick({ index, imgSrc })} data-testid='card'>
             <div className="card-face front">
             </div>
             <div className="card-face back">
