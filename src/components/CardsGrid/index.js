@@ -1,18 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Card from '../Card';
-import './styles.css';
-import ape from '../../../public/images/ape.jpg';
-import beeEater from '../../../public/images/bee-eater.jpg';
-import elephant from '../../../public/images/elephant.jpg';
-import flamingo from '../../../public/images/flamingo.jpg';
-import frog from '../../../public/images/frog.jpg';
-import pelican from '../../../public/images/pelican.jpg';
-import rhino from '../../../public/images/rhino.jpg';
-import shark from '../../../public/images/shark.jpg';
-import tiger from '../../../public/images/tiger.jpg';
-import zebra from '../../../public/images/zebra.jpg';
+import './styles.scss';
 
-export default function CardsGrid({ setShowEndGameModal, updateMovesCount }) {
+export default function CardsGrid({ images, setShowEndGameModal, updateMovesCount }) {
   const [cards, setCards] = useState([]);
   const [selectedCards, updateSelectedCards] = useState([]);
   const [matchedPairs, updateMatchedPairs] = useState(0);
@@ -29,15 +19,11 @@ export default function CardsGrid({ setShowEndGameModal, updateMovesCount }) {
   };
 
   const createCards = (cardsArr) => cardsArr.flatMap((card) => [
-    { imgSrc: card, matched: false, selected: false },
-    { imgSrc: card, matched: false, selected: false },
+    { imgSrc: card, matched: false },
+    { imgSrc: card, matched: false },
   ]);
 
   useEffect(() => {
-    const images = [ape, beeEater,
-      // elephant, flamingo,
-      // frog, pelican, rhino, shark, tiger, zebra
-    ];
     const shuffledCards = shuffleCards(createCards(images));
     setCards(shuffledCards);
   }, []);

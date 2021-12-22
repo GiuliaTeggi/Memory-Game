@@ -1,0 +1,72 @@
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: $pink;
+    transition: transform 0.4s linear;
+    will-change: transform;
+    transform-style: preserve-3d;
+    box-shadow: 0.1px 0.1px 8px 3px $dark-green;
+
+    &.flipped{
+        transform: rotateY(-180deg);
+    }
+}
+
+.card-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: $pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    box-sizing: border-box;
+
+    &.right, &.left {
+        width: 10px;
+        height: 100%; 
+        background-color: $dark-pink;
+    }
+
+    &.right { 
+        right: 0;
+        transform: rotateY( 90deg) translateZ(5px); 
+    }
+    &.left { 
+        left: 0;
+        transform: rotateY(-90deg) translateZ(5px); 
+    }
+
+    &.top, &.bottom {
+        width: 100%;
+        height: 10px; 
+        background-color: $dark-pink;
+    }
+
+    &.top {
+        top: 0;
+        transform: rotateX( 90deg) translateZ(5px); 
+    }
+    
+    &.bottom { 
+        bottom: 0;
+        transform: rotateX(-90deg) translateZ(5px); 
+    }
+
+    &.front {
+        transform: rotateY(0deg) translateZ(5px);
+    }
+
+    &.back {
+        transform: rotateY(180deg) translateZ(5px);
+    }
+
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}

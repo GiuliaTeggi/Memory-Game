@@ -12,8 +12,15 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(scss|css)$/,
+        use: ['style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: '@import "src/styles/variables.scss";',
+            },
+          }],
       },
       {
         test: /\.jpg/,

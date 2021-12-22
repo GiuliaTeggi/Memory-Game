@@ -1,0 +1,8 @@
+.App{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 150px auto 150px;
+    justify-items: center;
+    background-color: $dark-green;
+    min-height: 100vh;
+}

@@ -6,17 +6,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: $white;
     width: 600px;
     min-height: 300px;
     border-radius: 10px;
-}
 
-.modal h1{
-    margin: 0;
-    color: #5A3A81;
-    font-size: 3rem;
-    font-family: 'Luckiest Guy', cursive;;
+    & h1{
+        margin: 0;
+        color: $purple;
+        font-size: 3rem;
+        font-family: 'Luckiest Guy', cursive;;
+    }
 }
 
 button.close-modal-button{
@@ -39,8 +39,8 @@ button.start-game-button{
     width: 200px;
     font-size: 1rem;
     font-family: 'Luckiest Guy', cursive;
-    background-color: #83D1A5;
-    border-color: #2F4F4F;
+    background-color: $light-green;
+    border-color: $dark-green;
     cursor: pointer;
 }
 

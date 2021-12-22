@@ -1,0 +1,14 @@
+header{
+    text-align: center;
+    background-color: $light-green;
+    background-image: url('../../../public/images/app-background.svg');
+    background-position: center;
+    background-size: 100%;
+    width: 100%;
+
+    & h1{
+        margin-bottom: 0;
+        font-family: 'Luckiest Guy', cursive;;
+        font-size: 4rem;
+    }
+}
