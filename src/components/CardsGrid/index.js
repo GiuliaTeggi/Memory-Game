@@ -43,7 +43,7 @@ export default function CardsGrid({ images, setShowEndGameModal, updateMovesCoun
 
   const onCardClick = (cardObj) => {
     const { imgSrc, index, matched } = cardObj;
-    if (matched || selectedCards === 2) {
+    if (matched || selectedCards.length === 2) {
       return;
     }
     if (cardIsMatching(imgSrc)) {
