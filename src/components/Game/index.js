@@ -13,7 +13,7 @@ export default function Game() {
   const closeModal = () => setShowEndGameModal(false);
 
   return (
-        <div className="game">
+        <div className="game" data-testid="game">
           {showEndGameModal
           && <Modal reloadPage={reloadPage} closeModal={closeModal} movesCount={movesCount}/>
           }
