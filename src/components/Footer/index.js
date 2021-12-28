@@ -5,7 +5,7 @@ export default function Footer() {
   return (
         <footer>
             <p>Photos by
-              <span className='authors'>
+              <span className="authors">
               <a href="https://unsplash.com/@fridooh?utm_source=giulia-teggi-memory-game&utm_medium=referral">Frida Bredesen</a>,
               <a href="https://unsplash.com/@lexmelony?utm_source=giulia-teggi-memory-game&utm_medium=referral">Lex Melony</a>,
               <a href="https://unsplash.com/@rhino007?utm_source=giulia-teggi-memory-game&utm_medium=referral">Keith Markilie</a>,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import Card from '../Card';
 import './styles.scss';
 
@@ -78,3 +79,9 @@ export default function CardsGrid({ images, setShowEndGameModal, updateMovesCoun
         </div>
   );
 }
+
+CardsGrid.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string),
+  setShowEndGameModal: PropTypes.func,
+  updateMovesCount: PropTypes.func,
+};

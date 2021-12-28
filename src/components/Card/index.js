@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 export default function Card(props) {
@@ -9,7 +10,7 @@ export default function Card(props) {
   const cardStyles = `card ${isFlipped ? 'flipped' : ''}`;
 
   return (
-        <div className={cardStyles} onClick={() => onCardClick({ index, imgSrc })} data-testid='card'>
+        <div className={cardStyles} onClick={() => onCardClick({ index, imgSrc })} data-testid="card">
             <div className="card-face front">
             </div>
             <div className="card-face back">
@@ -22,3 +23,10 @@ export default function Card(props) {
         </div>
   );
 }
+
+Card.propTypes = {
+  index: PropTypes.number,
+  imgSrc: PropTypes.string,
+  isFlipped: PropTypes.bool,
+  onCardClick: PropTypes.func,
+};
