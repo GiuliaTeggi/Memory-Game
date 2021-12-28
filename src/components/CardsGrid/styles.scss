@@ -1,8 +1,16 @@
 .cards-grid{
     display: grid;
-    grid-gap: 25px;
-    grid-template-columns: repeat(auto-fit, 100px);
+    grid-gap: 12.5px;
+    grid-template-columns: repeat(auto-fit, 80px);
     grid-auto-flow: dense;
-    max-width: 600px;
+    max-width: 90vw;
+    justify-content: center;
     perspective: 600px;
+    @include breakpoint('tablet'){
+        grid-gap: 25px;
+        grid-template-columns: repeat(auto-fit, 100px);
+    }
+    @include breakpoint('desktop'){
+        max-width: 600px;
+    }
 }

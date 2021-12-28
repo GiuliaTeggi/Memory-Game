@@ -1,8 +1,13 @@
 .App{
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 150px auto 150px;
     justify-items: center;
     background-color: $dark-green;
+    background-image: url('../../../public/images/app-background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
+    @include breakpoint('desktop'){
+        grid-template-rows: 150px auto 150px;
+     }
 }

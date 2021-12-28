@@ -1,7 +1,6 @@
 header{
     text-align: center;
-    background-color: $light-green;
-    background-image: url('../../../public/images/app-background.svg');
+    background-color: rgba($white, 0.5);
     background-position: center;
     background-size: 100%;
     width: 100%;
@@ -9,6 +8,9 @@ header{
     & h1{
         margin-bottom: 0;
         font-family: 'Luckiest Guy', cursive;;
-        font-size: 4rem;
+        font-size: 3rem;
+        @include breakpoint('tablet'){
+            font-size: 4rem;
+        }
     }
 }
