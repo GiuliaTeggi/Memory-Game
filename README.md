@@ -1,4 +1,4 @@
-# Memory Game
+# 🍀 Memory Game 🍀
 
 Play here: https://giulias-memory-game.netlify.app/
 
@@ -8,4 +8,4 @@ Play here: https://giulias-memory-game.netlify.app/
 
 ## Tech stack 
 
-React, Webpack, SASS, React Testing Library
+React, SASS, Webpack, React Testing Library
