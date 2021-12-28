@@ -13,7 +13,7 @@ export default function Card(props) {
             <div className="card-face front">
             </div>
             <div className="card-face back">
-              <img src={imgSrc} />
+              <img src={imgSrc} alt="memory card image"/>
             </div>
             <div className="card-face right"></div>
             <div className="card-face left"></div>
